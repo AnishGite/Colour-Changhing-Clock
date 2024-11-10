@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Changing Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+            font-family: Arial, sans-serif;
+        }
+
+        #clock {
+            font-size: 8rem;
+            font-weight: bold;
+            transition: color 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString();
+            const clock = document.getElementById('clock');
+            clock.textContent = time;
+            
+            // Generate random color
+            const hue = Math.floor(Math.random() * 360);
+            clock.style.color = `hsl(${hue}, 100%, 50%)`;
+        }
+
+        // Update clock immediately and then every second
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
